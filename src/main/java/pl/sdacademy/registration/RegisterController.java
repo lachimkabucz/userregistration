@@ -25,5 +25,31 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String city = request.getParameter("city");
+        String street = request.getParameter("street");
+        String houseNo = request.getParameter("houseNo");
+
+        userDTO user = new userDTO();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+
+        AddressDTO addressDTO = new AddressDTO();
+        addressDTO.setCity(city);
+        addressDTO.setStreet(street);
+        addressDTO.setHouseNo(houseNo);
+        user.setAddressDTO(addressDTO);
+
+        userService.saveUser(user);
+
+
+        request.getRequestDispatcher("WEB-INF/userAdded.jsp").forward(request,response);
+
+
+
     }
+
+
+
 }

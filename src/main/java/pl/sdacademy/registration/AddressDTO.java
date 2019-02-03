@@ -2,13 +2,24 @@ package pl.sdacademy.registration;
 
 public class AddressDTO {
 
-        private Long id;
-        private String city;
-        private String street;
-        private String houseNo;
+    private Long id;
+    private String city;
+    private String street;
+    private String houseNo;
+
+    public AddressDTO() {
+    }
+
+    public AddressDTO(Address address) {
+        this.id = address.getId();
+        this.city = address.getCity();
+        this.street = address.getStreet();
+        this.houseNo = address.getHouseNo();
+    }
 
 
-        public Long getId() {
+
+    public Long getId() {
             return id;
         }
 
@@ -40,6 +51,11 @@ public class AddressDTO {
         public void setHouseNo(String houseNo) {
             this.houseNo = houseNo;
         }
+
+    @Override
+    public String toString() {
+        return "City: "+ city + " " +"Street: " + street + " " + "House NO: " + houseNo;
+    }
 
     }
 

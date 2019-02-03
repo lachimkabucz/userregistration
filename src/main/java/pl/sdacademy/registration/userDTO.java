@@ -7,6 +7,17 @@ public class userDTO {
     private String lastName;
     private AddressDTO addressDTO;
 
+    public userDTO(){
+
+    }
+
+    public userDTO(User user) {
+        this.id = user.getId();
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.addressDTO = new AddressDTO(user.getAddress());
+    }
+
 
     public Long getId() {
         return id;

@@ -3,6 +3,8 @@ package pl.sdacademy.registration;
 
 import javax.inject.Singleton;
 import javax.inject.Inject;
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 @Singleton
 public class UserService {
@@ -29,4 +31,9 @@ public class UserService {
         userDao.saveUser(user);
     }
 
+    Collection<userDTO> getUsers() {
+        return userDao.getUsers().stream()
+                .map(userDTO::new)
+                .collect(Collectors.toList());
+    }
 }
